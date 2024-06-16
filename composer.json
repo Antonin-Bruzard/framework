@@ -1,0 +1,18 @@
+{
+    "name": "antonin/framework",
+    "autoload": {
+        "psr-4": {
+            "Src\\": "src/",
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "antonin.bruzard",
+            "email": "antonin.bruzard@gmail.com"
+        }
+    ],
+    "require": {
+        "doctrine/orm": "^3.2"
+    }
+}
