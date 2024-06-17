@@ -12,6 +12,7 @@ $test = new MainController();
 
 
 // autoload des class -> intégrer en récursif les namespace
+// REP: Pas besoin, c'était un problème de nommage de dossiers controller -> Controller (comme le namespace)
 
 // TODO: Utiliser les annotation php pour faire le système de routing
 
@@ -22,7 +23,7 @@ $test = new MainController();
 // La en gros, on va chercher a démarrer notre app (UNE SEULE FOIS):
 // - conf
 // db
-// conteneur d'injection d déoendance (DIC/DI).
+// conteneur d'injection d dépendance (DIC/DI).
 // Router ...
 
 //dp($_SERVER);
