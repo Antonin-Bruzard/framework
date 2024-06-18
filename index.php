@@ -1,18 +1,17 @@
 <?php
 
-use App\Controller\MainController;
 use Src\App;
+use App\Controller\MainController;
 
 require_once 'src/functions.php';
 require 'vendor/autoload.php';
 
-App::get();
+/*
+ * Initialisation de l'application
+*/
+App::get()->registerController(MainController::class);
 
-$test = new MainController();
 
-
-// autoload des class -> intégrer en récursif les namespace
-// REP: Pas besoin, c'était un problème de nommage de dossiers controller -> Controller (comme le namespace)
 
 // TODO: Utiliser les annotation php pour faire le système de routing
 
