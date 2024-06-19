@@ -9,7 +9,8 @@ require 'vendor/autoload.php';
 /*
  * Initialisation de l'application
 */
-App::get()->registerController(MainController::class);
+App::get();
+App::get()->router()->handle($_SERVER['REDIRECT_URL'], $_SERVER['argv']);
 
 
 

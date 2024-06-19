@@ -8,6 +8,7 @@ use ReflectionClass;
 class App
 {
     private static ?App $_instance = null;
+    private Router $router;
 
     public static function get(): App
     {
@@ -18,29 +19,13 @@ class App
         return self::$_instance;
     }
 
-    public function route($controller, $method, $args): void
+    public function __construct()
     {
-//        $url = $_SERVER['REDIRECT_URL'];
-
-//        call_user_func_array([$controller, $method], $args);
+        $this->router = new Router();
     }
 
-    public function registerController(string $controller): void
+    public function router(): Router
     {
-        $class = new ReflectionClass($controller);
-
-        foreach ($class->getMethods() as $method) {
-            $routeAttributes = $method->getAttributes(Route::class);
-            if (empty($routeAttributes)) {
-                continue;
-            }
-            foreach ($routeAttributes as $routeAttribute) {
-
-                /* @var Route $route */
-                $route = $routeAttribute->newInstance();
-
-
-            }
-        }
+        return $this->router;
     }
 }
