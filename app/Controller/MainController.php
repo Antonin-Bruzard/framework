@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Attribute\Route;
-use JetBrains\PhpStorm\Deprecated;
 
 class MainController
 {
