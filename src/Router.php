@@ -62,7 +62,7 @@ class Router
 
     public function handle(string $path,array $args = []): void
     {
-        if ($this->routes[$path]) {
+        if (isset($this->routes[$path])) {
             call_user_func_array(
                 [
                     new $this->routes[$path]['controller'](),
