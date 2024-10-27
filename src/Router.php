@@ -5,11 +5,15 @@ namespace Src;
 use App\Attribute\Route;
 use JetBrains\PhpStorm\NoReturn;
 use ReflectionClass;
+use ReflectionException;
 
 class Router
 {
-    private $routes = [];
+    private array $routes = [];
 
+    /**
+     * @throws ReflectionException
+     */
     public function __construct()
     {
 
@@ -21,6 +25,9 @@ class Router
         }
     }
 
+    /**
+     * @throws ReflectionException
+     */
     #[NoReturn]
     private function registerControllerRoutes(string $controller): void
     {
@@ -53,14 +60,27 @@ class Router
         ];
     }
 
-    public function handle(string $path,array $args = [])
+    public function handle(string $path,array $args = []): void
     {
         if ($this->routes[$path]) {
-            call_user_func_array([$this->routes[$path]['controller'], $this->routes[$path]['method']], $args);
+            call_user_func_array(
+                [
+                    new $this->routes[$path]['controller'](),
+                    $this->routes[$path]['method']
+                ],
+                $args
+            );
 
             return;
         }
 
-        call_user_func_array([$this->routes['/']['controller'], $this->routes['/']['method']], $args);
+        call_user_func_array(
+            [
+                new $this->routes['/']['controller'](),
+                $this->routes['/']['method']
+            ]
+            ,
+            $args
+        );
     }
 }
