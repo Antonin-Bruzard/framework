@@ -2,9 +2,6 @@
 
 namespace Src;
 
-use App\Attribute\Route;
-use ReflectionClass;
-
 class App
 {
     private static ?App $_instance = null;
