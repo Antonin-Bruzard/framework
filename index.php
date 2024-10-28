@@ -7,9 +7,14 @@ require_once 'src/functions.php';
 require 'vendor/autoload.php';
 
 /*
- * Initialisation de l'application
+ * Initialize application
 */
-App::get()->router()->handle($_SERVER['REDIRECT_URL'], $_SERVER['argv']);
+$app = App::get();
+
+/*
+ * Handle route
+*/
+$app->router()->handle($_SERVER['REDIRECT_URL'], $_SERVER['argv']);
 
 
 
@@ -20,10 +25,12 @@ App::get()->router()->handle($_SERVER['REDIRECT_URL'], $_SERVER['argv']);
 
 
 // La en gros, on va chercher a démarrer notre app (UNE SEULE FOIS):
-// - conf
+// - conf ???
 // db
-// conteneur d'injection d dépendance (DIC/DI).
+// conteneur d'injection de dépendance (DIC/DI).
 // Router ...
 
 //dp($_SERVER);
+
+// TODO: gérer les méthodes get et post dans le système de routes
 
